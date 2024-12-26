@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2 style="border: 2px solid black; color: aliceblue; background:rgb(13, 130, 120); border-radius: 10px; padding:20px ; margin: 5px; font-weight: 800; width: 15%; text-align: center;">ToDo List</h2>
+    <div class="box">
+        <input class="input" type="text">
+        <button class="button" onclick="addTask()">Add Task</button>
+    </div>
+    <div class="todo_container">
+
+
+        <!-- to check the items -->
+        <!-- <div class="todo_item"></div> -->
+
+
+    </div>
+
+    <script>
+        function addTask() {
+            div = document.createElement("div");
+
+
+            // to get the value 
+
+
+            let a = document.querySelector("input").value
+
+            div.innerHTML = `<span>${a} </span>  <input class="inputEdit" type="text"> <button class="button" onclick="Edit(event)">Edit</button> <button class="button" onclick="removeIt(event)">Remove</button>`;
+
+
+            // show alert if value is not given
+            if (a.length == 0) {
+                alert("no task provided")
+            }
+
+            // to add value to document
+            else {
+                // adding class dynamically 
+
+                div.classList.add("todo_item");
+
+
+                // will add element 
+                document.querySelector(".todo_container").appendChild(div);
+
+                // to empty the input box at same time while adding tag 
+                document.querySelector("input").value = ""
+
+            }
+        }
+
+        // function to remove the element 
+        function removeIt(e) {
+            e.target.parentElement.remove()
+        }
+        //function to edit the elemnt
+        function Edit(e) {
+
+            let editInput = e.target.previousElementSibling.value
+
+            e.target.previousElementSibling.previousElementSibling.innerHTML = editInput
+        }
+    </script>
+</body>
+
+</html>
